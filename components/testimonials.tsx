@@ -20,7 +20,7 @@ export default function ContactUs() {
   };
 
   return (
-    <section className="relative overflow-hidden">
+    <section className="relative overflow-hidden" id='contact'>
       {/* Background Animation */}
       <div className="absolute inset-0 bg-[#151719] opacity-75" />
       <div className="absolute inset-0 bg-gradient-to-br from-transparent to-black opacity-60" />

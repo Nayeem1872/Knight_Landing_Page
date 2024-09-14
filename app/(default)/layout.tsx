@@ -25,6 +25,10 @@ export default function DefaultLayout({
 
   return (
     <>
+    {/* <head>
+
+    <link rel="icon" href="/images/logo.ico" />
+    </head> */}
       <main className="grow">
 
         <PageIllustration />

@@ -1,13 +1,13 @@
 export const metadata = {
-  title: 'Home - Open PRO',
-  description: 'Page description',
+  title: 'KNIGHT',
+  description: 'KNIGHT',
 }
 
 import Hero from '@/components/hero'
 import Features from '@/components/features'
-import Newsletter from '@/components/newsletter'
+
 import Zigzag from '@/components/zigzag'
-import Testimonials from '@/components/testimonials'
+
 import ContactUs from '@/components/testimonials'
 
 export default function Home() {
