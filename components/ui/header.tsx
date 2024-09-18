@@ -3,16 +3,16 @@ import MobileMenu from './mobile-menu'
 
 export default function Header() {
   return (
-    <header className=" w-full z-30 fixed top-0 shadow-lg" >
+    <header className="w-full z-30 fixed top-0 shadow-lg bg-[rgba(0,0,0,0.4)] backdrop-blur-lg">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="flex items-center justify-between h-20">
           {/* Site branding */}
           <div className="shrink-0 mr-4">
             {/* Logo */}
             <Link href="/" className="block" aria-label="Home">
-              <div className='flex-col items-center mt-8'>
+              <div className='flex-col items-center'>
                 <img src='/images/logo.png' className='w-12' alt="Logo" />
-                <h2 className='text-md font-semibold'>Knight</h2>
+                {/* <h2 className='text-md font-semibold text-white'>Knight</h2> */}
               </div>
             </Link>
           </div>
@@ -29,7 +29,6 @@ export default function Header() {
                   Features
                 </Link>
               </li>
-            
               <li>
                 <Link
                   href="#Service"

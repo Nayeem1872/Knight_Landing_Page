@@ -7,16 +7,40 @@ export default function ContactUs() {
     email: '',
     message: ''
   });
+  const [emailSent, setEmailSent] = useState(false);
+  const [error, setError] = useState('');
 
-  const handleChange = (e:any) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (e:any) => {
-    e.preventDefault();
-    // Handle form submission, e.g., via Axios or fetch
-    console.log('Form Data Submitted:', formData);
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault(); // Prevent the default form submission
+
+    try {
+      const response = await fetch('/api/sendEmail', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData), // Send the formData
+      });
+console.log("response",);
+
+      const result = await response.json();
+
+      if (response.ok) {
+        setEmailSent(true);
+        setError('');
+      } else {
+        setError(result.error || 'Error sending email');
+        setEmailSent(false);
+      }
+    } catch (err) {
+      setError('Error sending email');
+      setEmailSent(false);
+    }
   };
 
   return (
@@ -71,7 +95,7 @@ export default function ContactUs() {
                   name="message"
                   value={formData.message}
                   onChange={handleChange}
-                  // rows="4"
+                  rows={4}
                   className="mt-1 block w-full px-4 py-2 bg-gray-800 text-gray-300 border border-gray-600 rounded-lg shadow-sm focus:ring-purple-500 focus:border-purple-500"
                   placeholder="Write your message"
                 />
@@ -85,6 +109,9 @@ export default function ContactUs() {
                   Send Message
                 </button>
               </div>
+
+              {emailSent && <p className="text-green-500 text-center">Email sent successfully!</p>}
+              {error && <p className="text-red-500 text-center">Error: {error}</p>}
 
             </form>
           </div>
